@@ -22,3 +22,32 @@
     <div class="stat-desc">{{ fullName() }}</div>
   </div>
 </div>
+
+<div class="divider"></div>
+
+<div class="stats stats-vertical lg:stats-horizontal shadow w-full">
+  <div class="stat">
+    <div class="stat-title">Date Pipe</div>
+    <div class="stat-value">{{ customDate() | date }}</div>
+    <div class="stat-desc">{{ customDate() }}</div>
+  </div>
+
+  <div class="stat">
+    <div class="stat-title">Date|long|GMT-5</div>
+    <div class="stat-value">{{ customDate() | date : "long" : "GMT-5" }}</div>
+    <div class="stat-desc">{{ customDate() }}</div>
+  </div>
+</div>
+
+<div class="divider"></div>
+
+<div class="gap-2 flex flex-row" >
+  <h1 class="text-2xl font-bold">
+    Locale Actual:
+    <span class="badge badge-secondary">{{ currentLocale() }}</span>
+  </h1>
+
+  <button (click)="changeLocale('fr')" class="btn btn-primary">Changer en fracais</button>
+  <button (click)="changeLocale('en')" class="btn btn-primary">Change to English</button>
+  <button (click)="changeLocale('es')" class="btn btn-primary">Cambiar a español</button>
+</div>
