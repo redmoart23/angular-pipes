@@ -11,4 +11,17 @@
     </p>
     <button (click)="changeClient()" class="btn btn-primary">change</button>
   </app-card>
+  <app-card title="i18nPlural">
+    <p>
+      Actualmente hay {{ clients().length | i18nPlural : clientMap() }}
+       en la lista
+    </p>
+    <button
+      [disabled]="clients().length === 0"
+      (click)="deleteClient()"
+      class="btn btn-primary"
+    >
+      delete client
+    </button>
+  </app-card>
 </div>
