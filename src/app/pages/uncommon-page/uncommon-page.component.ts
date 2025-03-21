@@ -1,6 +1,14 @@
 import { Component, signal } from '@angular/core';
 import { CardComponent } from '../../components/card/card.component';
-import { I18nPluralPipe, I18nSelectPipe } from '@angular/common';
+import {
+  AsyncPipe,
+  I18nPluralPipe,
+  I18nSelectPipe,
+  JsonPipe,
+  KeyValuePipe,
+  SlicePipe,
+  TitleCasePipe,
+} from '@angular/common';
 
 const client1 = {
   name: 'John Doe',
@@ -18,7 +26,16 @@ const client2 = {
 
 @Component({
   selector: 'app-uncommon-page',
-  imports: [CardComponent, I18nSelectPipe, I18nPluralPipe],
+  imports: [
+    CardComponent,
+    I18nSelectPipe,
+    I18nPluralPipe,
+    SlicePipe,
+    JsonPipe,
+    KeyValuePipe,
+    TitleCasePipe,
+    AsyncPipe,
+  ],
   templateUrl: './uncommon-page.component.html',
 })
 export default class UncommonPageComponent {
@@ -29,6 +46,7 @@ export default class UncommonPageComponent {
     male: 'invitarlo',
     female: 'invitarla',
   };
+
 
   changeClient() {
     if (this.client() === client1) {
@@ -60,4 +78,18 @@ export default class UncommonPageComponent {
   deleteClient() {
     this.clients.update((prev) => prev.slice(1));
   }
+
+  profile = {
+    name: 'John Doe',
+    age: 31,
+    address: 'Ottawa, ON, Canada',
+  };
+
+  //Async pipe
+  promiseValue: Promise<string> = new Promise((resolve, reject) => {
+    setTimeout(() => {
+      resolve('Promise resolved');
+      console.log('Promise finished');
+    }, 3500);
+  });
 }
